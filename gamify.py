@@ -1,9 +1,22 @@
 """
-Tannaz Chowdhury
-Project Author : Micheal Guerzhoy 
-2024
-Python ver 3<
+Exercise Gamification System
+Author: [Tannaz Chowdhury]
+Date: [09/2024]
+Course: ESC180 - Introduction to Computer Programming
+
+Description:
+A fitness gamification simulator that rewards users with stars and 
+hedons (pleasure points) for physical activities like running or 
+carrying textbooks. It models real-world motivation and behavioral 
+patterns to track health improvement.
+
+Key Features:
+- Simulates health point accumulation from various activities.
+- Implements a reward system where frequent rewards lose effectiveness.
+- Recommends the most engaging activity at any given moment.
+
 """
+
 
 # Global Variables
 # hedons: Tracks the accumulated fun points (hedons) the user has.
