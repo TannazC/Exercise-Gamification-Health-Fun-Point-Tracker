@@ -1,7 +1,26 @@
+"""
+Tannaz Chowdhury
+Project Author : Micheal Guerzhoy 
+2024
+Python ver 3<
+"""
+
+# Global Variables
+# hedons: Tracks the accumulated fun points (hedons) the user has.
+# health: Tracks the accumulated health points of the user.
+# prev_activity: Stores the last activity the user performed.
+# prev_duration: Stores the duration of the last activity.
+# activity_log_long: Stores a history of all activities performed.
+# activity_log: Stores a compact history of activities performed.
+# time: Tracks the total elapsed time in minutes.
+# offer_time: Tracks when the last star was offered.
+# offer_activity: Stores which activity the last star was offered for.
+# first_offer_time: Stores the time when the first star was offered.
+# offer: Boolean flag indicating whether a star is currently available.
+# stars: Tracks the number of stars offered.
+
 import sys
 sys.version
-
-
 
 #This function returns the number of hedons that the user has accumulated so far.
 def get_cur_hedons():
@@ -13,7 +32,7 @@ def get_cur_health():
     global health
     return health
 
-#the user is tired if they finished running or carrying textbooks less than 2 hours
+#the user is tired if they finished running or carrying textbooks less than 2 hours ago
 #before the current activity started      
 def tired():
     global prev_activity, prev_duration, activity_log_long, activity_log
@@ -48,7 +67,7 @@ def health_calc(activity,duration):
                 break
         
         if activity == "running":
-           
+
         #health 
             if prev_duration<=180: 
                 health -= (3*prev_duration) #3 health points per minute up to 180
@@ -63,8 +82,7 @@ def health_calc(activity,duration):
         running_duration+=prev_duration
         use_run_total = True
         activity_log_long.reverse()
-   
-#fix  
+    
     if use_run_total == True:
             
         if activity == "running":
@@ -75,7 +93,7 @@ def health_calc(activity,duration):
                 health += (3*180)+(1*(running_duration-180)) #1 health point per minute after 180
                        
         elif activity == "textbooks":
-            health+= (2*running_duration) #always gives 2 health points / min
+            health+= (2*running_duration) #always gives 2 health points/min
         use_run_total = False
         running_duration = 0
         
@@ -88,15 +106,9 @@ def health_calc(activity,duration):
                 health += (3*180)+(1*(duration-180)) #1 health point per minute after 180
                        
         elif activity == "textbooks":
-            health+= (2*duration) #always gives 2 health points / min
+            health+= (2*duration) #always gives 2 health points/min
           
-       
-        
- 
-#--------------------------------------
-
-
-            
+                 
 def perform_activity(activity,duration):
     
     global health
@@ -130,7 +142,7 @@ def perform_activity(activity,duration):
                 hedons+= (-2*duration)
             else:
                 if duration<=10:
-                    hedons+= (2*duration) # 2 hedon / min up to 10 min
+                    hedons+= (2*duration) # 2 hedon/min up to 10 min
                 else:
                     hedons+= (-2*(duration-10))+(10*2) # -2 per min after 10
 #textbooks   
@@ -335,7 +347,7 @@ def initialize():
 
 if __name__ == '__main__':
     initialize()
-    """
+    
     perform_activity("running", 30)
     print(get_cur_hedons()) # -20 =  10 * 2 + 20 * (-2)
     print(get_cur_health()) # 90 = 30 * 3
@@ -354,29 +366,4 @@ if __name__ == '__main__':
     print(get_cur_health()) # 700 =  210 + 160 * 3 + 10 * 1
     print(get_cur_hedons()) # -430 =  -90 + 170 * (-2)
     perform_activity("running", 170)
-    print(get_cur_health())  """
-    
-    initialize()
-    print(get_cur_health())
-    print(get_cur_hedons())
-    perform_activity("running", 20)
-    print(get_cur_health())
-    print(get_cur_hedons())
-    perform_activity("running", 90)
-    print(get_cur_health())
-    print(get_cur_hedons())
-    offer_star("running")
-    perform_activity("textbooks", 100)
-    print(get_cur_health())
-    print(get_cur_hedons())
-    offer_star("textbooks")
-    perform_activity("textbooks", 20)
-    print(get_cur_health())
-    print(get_cur_hedons())
-    offer_star("textbooks")
-    print(star_can_be_taken("textbooks"))
-    perform_activity("textbooks", 1)
-    print(get_cur_health())
-    print(get_cur_hedons())
-    
-    
+    print(get_cur_health())    
